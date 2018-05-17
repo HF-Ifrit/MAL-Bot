@@ -55,7 +55,7 @@ def anime(*name):
         xml = get_anime_xml(fullname)
         anime_info = ResultInfo(xml)
         yield from bot.say(anime_info.to_string())
-    except commands.CommandInvokeError:
+    except ET.ParseError:
         yield from bot.say('Search error')
 
 
@@ -70,7 +70,7 @@ def manga(*name):
         xml = get_manga_xml(fullname)
         manga_info = ResultInfo(xml)
         yield from bot.say(manga_info.to_string())
-    except commands.CommandInvokeError:
+    except ET.ParseError:
         yield from bot.say("Search error")
 
 
